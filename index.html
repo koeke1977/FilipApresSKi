@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filip Après-Ski Photo Exchange</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .dropbox-section {
+            margin: 2rem 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .feature-list li {
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: #f8f9ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #0061ff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0051d5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 97, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .info-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            color: #856404;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            text-align: center;
+            color: #666;
+        }
+
+        .status-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .dropbox-icon {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div style="display: flex; align-items: center;">
+                <span class="logo">⛷️</span>
+                <h1>Filip Après-Ski</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="hero-section">
+                <div class="dropbox-icon">📦</div>
+                <h2>Share Your Ski Memories!</h2>
+                <p>Exchange and view après-ski photos with your friends through Dropbox</p>
+            </div>
+
+            <div class="dropbox-section">
+                <ul class="feature-list">
+                    <li>Upload your favorite après-ski moments</li>
+                    <li>View photos shared by others</li>
+                    <li>Secure Dropbox integration</li>
+                    <li>Easy sharing with friends</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>📌 How it works:</strong>
+                    Connect your Dropbox account to upload and browse shared photos. All photos are stored securely in your connected Dropbox folder.
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" id="connectDropbox">
+                        Connect to Dropbox
+                    </button>
+                    <button class="btn btn-secondary" id="viewGallery">
+                        View Gallery
+                    </button>
+                </div>
+
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Filip Après-Ski Photo Exchange | Powered by Dropbox</p>
+    </footer>
+
+    <script>
+        // Dropbox App configuration
+        // Note: Replace 'YOUR_APP_KEY' with actual Dropbox App Key
+        const DROPBOX_APP_KEY = 'YOUR_APP_KEY';
+        const REDIRECT_URI = window.location.origin + '/callback';
+
+        // DOM elements
+        const connectBtn = document.getElementById('connectDropbox');
+        const viewGalleryBtn = document.getElementById('viewGallery');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // Show status message
+        function showStatus(message, type = 'success') {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message ${type}`;
+            statusMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Check if user is authenticated
+        function isAuthenticated() {
+            return localStorage.getItem('dropboxAccessToken') !== null;
+        }
+
+        // Connect to Dropbox
+        connectBtn.addEventListener('click', () => {
+            if (DROPBOX_APP_KEY === 'YOUR_APP_KEY') {
+                showStatus('⚠️ Dropbox App Key not configured. Please set up your Dropbox app credentials.', 'error');
+                return;
+            }
+
+            // Dropbox OAuth2 flow
+            const authUrl = `https://www.dropbox.com/oauth2/authorize?` +
+                `client_id=${DROPBOX_APP_KEY}&` +
+                `response_type=token&` +
+                `redirect_uri=${encodeURIComponent(REDIRECT_URI)}`;
+            
+            window.location.href = authUrl;
+        });
+
+        // View Gallery
+        viewGalleryBtn.addEventListener('click', () => {
+            if (!isAuthenticated()) {
+                showStatus('Please connect to Dropbox first!', 'error');
+                return;
+            }
+            
+            showStatus('Opening gallery...', 'success');
+            // In a real implementation, this would fetch and display photos
+            // For now, we'll simulate the action
+            setTimeout(() => {
+                alert('Gallery feature: Here you would see all shared après-ski photos from Dropbox!');
+            }, 500);
+        });
+
+        // Handle OAuth callback
+        function handleOAuthCallback() {
+            const hash = window.location.hash.substring(1);
+            const params = new URLSearchParams(hash);
+            const accessToken = params.get('access_token');
+
+            if (accessToken) {
+                localStorage.setItem('dropboxAccessToken', accessToken);
+                showStatus('✅ Successfully connected to Dropbox!', 'success');
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+
+        // Check for OAuth callback on page load
+        if (window.location.hash.includes('access_token')) {
+            handleOAuthCallback();
+        }
+
+        // Update UI based on authentication status
+        if (isAuthenticated()) {
+            connectBtn.textContent = '✓ Connected to Dropbox';
+            connectBtn.disabled = true;
+            connectBtn.style.opacity = '0.7';
+        }
+
+        // Add demo mode notice
+        if (DROPBOX_APP_KEY === 'YOUR_APP_KEY') {
+            const demoNotice = document.createElement('div');
+            demoNotice.className = 'info-box';
+            demoNotice.style.background = '#e7f3ff';
+            demoNotice.style.borderColor = '#2196F3';
+            demoNotice.style.color = '#0d47a1';
+            demoNotice.innerHTML = `
+                <strong>🔧 Demo Mode</strong>
+                This is a demo version. To enable full Dropbox functionality:
+                <ol style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li>Create a Dropbox app at <a href="https://www.dropbox.com/developers/apps" target="_blank" style="color: #0d47a1;">dropbox.com/developers/apps</a></li>
+                    <li>Get your App Key</li>
+                    <li>Replace 'YOUR_APP_KEY' in the JavaScript code</li>
+                    <li>Set the redirect URI to match your domain</li>
+                </ol>
+            `;
+            document.querySelector('.dropbox-section').insertBefore(
+                demoNotice, 
+                document.querySelector('.button-group')
+            );
+        }
+    </script>
+</body>
+</html>
