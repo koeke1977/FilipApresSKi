@@ -268,7 +268,7 @@
         // Dropbox App configuration
         // Note: Replace 'YOUR_APP_KEY' with actual Dropbox App Key
         const DROPBOX_APP_KEY = 'YOUR_APP_KEY';
-        const REDIRECT_URI = window.location.origin + '/callback';
+        const REDIRECT_URI = window.location.origin + window.location.pathname.replace('index.html', 'callback.html');
 
         // DOM elements
         const connectBtn = document.getElementById('connectDropbox');

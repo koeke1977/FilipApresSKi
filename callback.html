@@ -63,11 +63,11 @@
         
         if (hash) {
             // Redirect back to index with the hash
-            window.location.href = '/index.html' + hash;
+            window.location.href = 'index.html' + hash;
         } else {
             // No token found, redirect to index
             setTimeout(() => {
-                window.location.href = '/index.html';
+                window.location.href = 'index.html';
             }, 2000);
         }
     </script>
