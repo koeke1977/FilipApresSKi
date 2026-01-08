@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dropbox test</title>
+  <title>Je foto</title>
 
   <style>
     body {
@@ -20,33 +20,69 @@
     .card {
       max-width: 420px;
       width: 100%;
-      padding: 20px;
+      padding: 24px;
       text-align: center;
       background: #1c1c1c;
       border-radius: 16px;
     }
 
-    img {
-      width: 100%;
-      border-radius: 12px;
+    h1 {
+      font-size: 22px;
       margin-bottom: 16px;
+    }
+
+    a.button {
+      display: block;
+      padding: 16px;
+      margin: 14px 0;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 12px;
+    }
+
+    .download {
+      background: #ffffff;
+      color: #000;
+    }
+
+    .whatsapp {
+      background: #25D366;
+      color: #000;
+    }
+
+    .small {
+      margin-top: 16px;
+      font-size: 12px;
+      opacity: 0.6;
     }
   </style>
 </head>
 
 <body>
   <div class="card">
-    <h1>📸 Dropbox test foto</h1>
+    <h1>📸 Je foto is klaar</h1>
 
-    <img
-      src="https://dl.dropboxusercontent.com/scl/fi/ez8t40o4bscc2372j54ho/test.jpg?raw=1"
-      alt="Dropbox test foto"
+    <!-- DOWNLOAD -->
+    <a
+      class="button download"
+      href="https://www.dropbox.com/scl/fi/ez8t40o4bscc2372j54ho/test.jpg?dl=1"
+      target="_blank"
     >
-<a href="https://www.dropbox.com/scl/fi/.../test.jpg?dl=1">
-  Download foto
-</a>
+      ⬇️ Download foto
+    </a>
 
-    <p>Als je dit ziet, werken GitHub Pages en Dropbox samen 👍</p>
+    <!-- WHATSAPP -->
+    <a
+      class="button whatsapp"
+      href="https://wa.me/?text=Hier%20is%20je%20foto%20👉%20https://www.datuur.be"
+      target="_blank"
+    >
+      💬 Verstuur via WhatsApp
+    </a>
+
+    <div class="small">
+      Foto tijdelijk beschikbaar
+    </div>
   </div>
 </body>
 </html>
