@@ -1,2 +1,2 @@
 # FilipApresSKi
-Html 
+Bedankt voor het ophalen van je foto!
