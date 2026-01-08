@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dropbox test</title>
+
   <style>
     body {
       margin: 0;
       background: #111;
       color: #fff;
-      font-family: system-ui, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
+
+    .card {
+      max-width: 420px;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+      background: #1c1c1c;
+      border-radius: 16px;
+    }
+
     img {
-      max-width: 90%;
-      max-height: 90vh;
+      width: 100%;
       border-radius: 12px;
+      margin-bottom: 16px;
     }
   </style>
 </head>
+
 <body>
+  <div class="card">
+    <h1>📸 Dropbox test foto</h1>
 
-  <img
-    src="https://dl.dropboxusercontent.com/scl/fi/ez8t40o4bscc2372j54ho/test.jpg"
-    alt="Dropbox test foto"
-  >
+    <img
+      src="https://dl.dropboxusercontent.com/scl/fi/ez8t40o4bscc2372j54ho/test.jpg?raw=1"
+      alt="Dropbox test foto"
+    >
 
+    <p>Als je dit ziet, werken GitHub Pages en Dropbox samen 👍</p>
+  </div>
 </body>
 </html>
