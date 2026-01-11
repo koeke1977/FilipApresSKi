@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: #111;
       color: #fff;
     }
@@ -30,6 +30,12 @@
       cursor: pointer;
     }
 
+    #status {
+      text-align: center;
+      margin-top: 20px;
+      opacity: 0.8;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -43,13 +49,6 @@
       object-fit: cover;
       border-radius: 12px;
       background: #222;
-      cursor: pointer;
-    }
-
-    .loading {
-      text-align: center;
-      opacity: 0.7;
-      margin-top: 20px;
     }
   </style>
 </head>
@@ -60,7 +59,7 @@
   <button onclick="loadImages()">🔄 Refresh</button>
 </header>
 
-<div id="status" class="loading">Foto’s laden…</div>
+<div id="status">Foto’s laden…</div>
 <div id="grid" class="grid"></div>
 
 <script>
@@ -72,30 +71,47 @@ const DROPBOX_TOKEN = "sl.u.AGMvno-ouQ8DRcb1iYSXr4PwvLlryzG2LYAgfpalWMfra_crlLn_
 // pad van je dropbox map
 const FOLDER_PATH = "https://www.dropbox.com/scl/fo/vo1ijrqbdmh1oa9kg3tcx/AB6wE6e6kkYyiLoNxA-OpiY?rlkey=b2cdbma7vrsd0uuyp46n9w1mr&st=mu738o2x&dl=0";
 
+
 /* ========================================== */
 
 async function loadImages() {
-  document.getElementById("status").textContent = "Foto’s laden…";
-  document.getElementById("grid").innerHTML = "";
+  const status = document.getElementById("status");
+  const grid = document.getElementById("grid");
+
+  status.textContent = "Foto’s laden…";
+  grid.innerHTML = "";
 
   try {
-    const list = await fetch("https://api.dropboxapi.com/2/files/list_folder", {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer " + DROPBOX_TOKEN,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        path: FOLDER_PATH
-      })
-    }).then(r => r.json());
+    const response = await fetch(
+      "https://api.dropboxapi.com/2/files/list_folder",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + DROPBOX_TOKEN,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ path: FOLDER_PATH })
+      }
+    );
+
+    const list = await response.json();
+    console.log("Dropbox list_folder response:", list);
+
+    if (!list.entries) {
+      throw new Error("Geen geldige Dropbox response");
+    }
 
     const images = list.entries
-      .filter(f => f[".tag"] === "file" && f.name.match(/\.(jpg|jpeg|png|webp)$/i))
-      .sort((a, b) => b.server_modified.localeCompare(a.server_modified));
+      .filter(e =>
+        e[".tag"] === "file" &&
+        e.name.match(/\.(jpg|jpeg|png|webp)$/i)
+      )
+      .sort((a, b) =>
+        b.server_modified.localeCompare(a.server_modified)
+      );
 
     for (const file of images) {
-      const link = await fetch(
+      const linkResponse = await fetch(
         "https://api.dropboxapi.com/2/files/get_temporary_link",
         {
           method: "POST",
@@ -105,22 +121,26 @@ async function loadImages() {
           },
           body: JSON.stringify({ path: file.path_lower })
         }
-      ).then(r => r.json());
+      );
+
+      const linkData = await linkResponse.json();
+
+      if (!linkData.link) continue;
 
       const img = document.createElement("img");
-      img.src = link.link;
+      img.src = linkData.link;
       img.loading = "lazy";
 
-      document.getElementById("grid").appendChild(img);
+      grid.appendChild(img);
     }
 
-    document.getElementById("status").textContent =
+    status.textContent =
       images.length === 0 ? "Geen foto’s gevonden" : "";
 
   } catch (err) {
     console.error(err);
-    document.getElementById("status").textContent =
-      "❌ Fout bij laden van foto’s";
+    status.textContent =
+      "❌ Fout bij laden van foto’s – check console";
   }
 }
 
